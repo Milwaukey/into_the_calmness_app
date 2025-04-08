@@ -1,6 +1,6 @@
 import Svg, { Path } from 'react-native-svg';
 
-export default function PlusIcon({ width = 25, height = 24, fill = '#F9F9F9' }){
+export default function PlusIcon({ width, height, fill = '#F9F9F9' }){
 
     return (
         <Svg width={width} height={height} viewBox="0 0 25 24" fill="none">

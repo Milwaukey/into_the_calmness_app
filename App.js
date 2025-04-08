@@ -21,7 +21,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator tabBar={props => <CustomTabBar {...props} />}>
+      <Tab.Navigator initialRouteName="Map" tabBar={props => <CustomTabBar {...props} />} >
 
         <Tab.Screen name="Profile" component={ProfileScreen} options={{tabBarIconComponent: ProfileIcon, headerShown: false,}} />
         <Tab.Screen name="Favorite" component={FavoriteScreen} options={{tabBarIconComponent: StarIcon, headerShown: false,}} />

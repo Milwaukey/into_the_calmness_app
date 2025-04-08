@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 
 
 
@@ -7,19 +7,18 @@ export default function CustomTabBar({ state, descriptors, navigation }){
 
     return (
         <View style={styles.container}>
-
             <View style={styles.menuWrapper}>
 
             {state.routes.map((route, index) => {
 
-                const isFocused = state.index === index; 
-                const { options } = descriptors[route.key];
+                const isFocused = state.index === index; // Checks if the currect state index matches the clicked one!
+                const { options } = descriptors[route.key]; // Destructuring to access our things in options like the icon for the menubar
 
-                const onPress = () => {
+                function onPress() {
                     const event = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true,});
           
                     if (!isFocused && !event.defaultPrevented) {
-                      navigation.navigate(route.name, route.params);
+                      navigation.navigate(route.name);
                     }
                   };
 
@@ -33,9 +32,8 @@ export default function CustomTabBar({ state, descriptors, navigation }){
                   );
             })}
 
-            </View>
-
-        </View>
+            </View> 
+        </View>  
     )
 }
 
