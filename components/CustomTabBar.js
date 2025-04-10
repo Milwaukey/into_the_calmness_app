@@ -11,8 +11,8 @@ export default function CustomTabBar({ state, descriptors, navigation }){
 
             {state.routes.map((route, index) => {
 
-                const isFocused = state.index === index; // Checks if the currect state index matches the clicked one!
-                const { options } = descriptors[route.key]; // Destructuring to access our things in options like the icon for the menubar
+                const isFocused = state.index === index; // Checks if the current state index matches the clicked one!
+                const { options } = descriptors[route.key]; // Destructuring to access properties in options, like the icon for the menubar
 
                 function onPress() {
                     const event = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true,});
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
         borderRadius: 50
     }
 
-}) 
+})

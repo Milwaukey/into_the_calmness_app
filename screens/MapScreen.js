@@ -1,14 +1,12 @@
 import { View, Text, StyleSheet, Button } from "react-native";
 
 
-export default function AddLocationScreen( {navigation} ){
+export default function MapScreen({navigation}){
 
     return (
         <View style={styles.container}>
-            <Text>Add new location</Text>
-
-
-            <Button title="Add Image" onPress={() => navigation.replace("Camera")} />
+            <Text>Map Screen</Text>
+            <Button title="View single pin" onPress={() => navigation.replace("DetailView")} />
         </View>
     );
 }
@@ -18,7 +16,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: 'lightgrey',
+        backgroundColor: 'pink',
         paddingTop: 60
     }
 

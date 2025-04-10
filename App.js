@@ -1,37 +1,26 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import CustomTabBar from './components/CustomTabBar';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
 
 
+import MainTabs from './components/MainTabs';
 import HomeScreen from './screens/HomeScreen';
-import FavoriteScreen from './screens/FavoriteScreen';
-import ProfileScreen from './screens/ProfileScreen.js';
-import AddLocationScreen from './screens/AddLocationScreen.js';
+import CameraScreen from './screens/CameraScreen';
+import DetailViewPinScreen from './screens/DetailViewPinScreen';
 
 
-import MapIcon from './assets/icons/MapIcon.js'
-import StarIcon from './assets/icons/StarIcon.js';
-import ProfileIcon from './assets/icons/ProfileIcon.js';
-import PlusIcon from './assets/icons/PlusIcon.js'
-
-
-const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName="Map" tabBar={props => <CustomTabBar {...props} />} >
-
-        <Tab.Screen name="Profile" component={ProfileScreen} options={{tabBarIconComponent: ProfileIcon, headerShown: false,}} />
-        <Tab.Screen name="Favorite" component={FavoriteScreen} options={{tabBarIconComponent: StarIcon, headerShown: false,}} />
-        <Tab.Screen name="Map" component={HomeScreen} options={{tabBarIconComponent: MapIcon, headerShown: false,}} />
-        <Tab.Screen name="New Location" component={AddLocationScreen} options={{tabBarIconComponent: PlusIcon, headerShown: false,}} />
-
-      </Tab.Navigator>
+      <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Login" component={HomeScreen} />
+        <Stack.Screen name="Camera" component={CameraScreen} />
+        <Stack.Screen name="DetailView" component={DetailViewPinScreen} />
+        <Stack.Screen name="MainTabs" component={MainTabs} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-
 
