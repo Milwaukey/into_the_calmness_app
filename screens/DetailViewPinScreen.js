@@ -7,6 +7,7 @@ export default function DetailViewPinScreen({route, navigation}){
 
     const { pinObj } = route.params;
     
+    
 
     return (
         <View style={styles.container}>

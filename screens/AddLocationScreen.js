@@ -1,42 +1,74 @@
-import { View, Text, StyleSheet, Button } from "react-native";
+
+import { useState } from "react";
+import { View, Text, StyleSheet, Button, Image, Pressable, TextInput, Alert } from "react-native";
+
+import { useContext } from 'react';
+import { PinContext } from '../store/pins-context.js';
 
 
-export default function AddLocationScreen( {navigation} ){
+export default function AddLocationScreen( {route, navigation} ){
 
-    // Form that contains option to take image, title, description and geofencing from where you are right now when picture is taken. 
+    const { addPin } = useContext(PinContext); // Skal være den function jeg skal bruge for at oprette!
 
-    // Step 2, if you try to write something in the inputfield before taking a picture (give an alert)
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    const [location, setLocation] = useState('')
 
-    // Step 3, When clicking on "Take image", navigate to camera screen. 
 
-    // Step 4, if image is true = show image in field and remove "take image btn".. 
+    const { photo } = route.params || {};
 
-    // If false, show the btn to guide you to the camera component.
+    function handleGetLocation(){
+        // Geofencing the location
+
+    }
+
+
+    function handleAddNewLocation(){
+        // Check if fields are empty!
+        if(title == ''){
+            return Alert.alert('Missing Title', 'Please enter a title before proceeding.', [
+              ]);
+
+        }else if(description == ''){
+            return Alert.alert('Missing Description', 'Please write a short description to continue.', [
+              ]);
+        }
+
+        const id = `${Date.now()}-${Math.random().toString(36)}`;
+
+        // Making the location object
+        const newLocationObj = 
+        {
+            id: id,
+            coordinate: {
+                latitude: 55.71741262404851,
+                longitude: 12.380605952531171
+            },
+            image: photo,
+            title: title,
+            description: description
+        }
+
+        // Parsing the new Location object to context Pins with addPn function in context
+        addPin(newLocationObj)
+    }
 
 
     return (
         <View style={styles.container}>
-        
 
 
-            <Text>Title</Text>
-            <Text>Description</Text>
-            <Text>Location</Text>
+            <TextInput placeholder='Title' value={title} onChangeText={setTitle}/>
+            <TextInput placeholder='Description' value={description} onChangeText={setDescription}/>
 
+            <Pressable onPress={handleGetLocation}>
+                <Text>Add Location</Text>
+            </Pressable>
 
+            {photo == undefined ? <Button title="Add Image" onPress={() => navigation.replace("Camera")} /> : <Image style={{width: 150, height: 150}} source={{ uri: photo }}/>}
 
-
-
-
-
-
-
-
-
-            <Text>Visning af billede man tog, hvis man har taget et (hide knap til at tage billede)</Text>
-            <Button title="Add Image" onPress={() => navigation.replace("Camera")} />
-
-
+            <Button title='+ Add new location' onPress={handleAddNewLocation} />
+            
         </View>
     );
 }

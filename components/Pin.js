@@ -3,11 +3,13 @@ import { StyleSheet, View, Image } from 'react-native';
 
 export default function Pin({pinObj}){
 
+    const image = typeof pinObj.image === 'string' ? { uri : pinObj.image } : pinObj.image;
+
 
     return (
     
     <View style={styles.pinContainer}>
-        <Image style={styles.pinImage} source={pinObj.image} />
+        <Image style={styles.pinImage} source={image} />
     </View>
 
 

@@ -10,8 +10,6 @@ import Pin from './Pin.js';
 export default function Map({navigation} ){
 
   const { pins } = useContext(PinContext);
-  // console.log(pins) { pinId: item.id }
-
 
   function testTouch(){ // TEST FUNCTION - DELET LATER
     console.log('You hit a pin')

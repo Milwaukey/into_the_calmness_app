@@ -1,7 +1,3 @@
-import relaxingBenchImg from '../assets/images/relaxing-bench-01382378.jpg'
-import birdWatchingImg from '../assets/images/birdwatching.jpeg'
-import SeaBridgeImg from '../assets/images/seaBridge.jpg'
-import madpakkeHusetImg from '../assets/images/madpakkehuset.jpg'
 
 
 export default [
@@ -12,7 +8,7 @@ export default [
             latitude: 55.713417,
             longitude: 12.372927
         },
-        image: relaxingBenchImg,
+        image: require('../assets/images/relaxing-bench-01382378.jpg'),
         title: 'Relaxing Bench',
         description: 'Take a relaxing moment at this bench and enjoy the squrriels and bunnies jumping around. Its place away from the forest road and perfect for a relaxing break.'
     },
@@ -22,7 +18,7 @@ export default [
             latitude: 55.71093831777924,
             longitude: 12.36925575275721
         },
-        image: birdWatchingImg,
+        image: require('../assets/images/birdwatching.jpeg'),
         title: 'Birdtower Swanlake',
         description: '.......'
     },
@@ -32,7 +28,7 @@ export default [
             latitude: 55.71209124937866,
             longitude: 12.370931820043664
         },
-        image: SeaBridgeImg,
+        image: require('../assets/images/seaBridge.jpg'),
         title: 'Sea bridge',
         description: '.......'
     },
@@ -42,7 +38,7 @@ export default [
             latitude: 55.711621798276724,
             longitude: 12.378502052257515
         },
-        image: madpakkeHusetImg,
+        image: require('../assets/images/madpakkehuset.jpg'),
         title: 'Harrestrup Ådal',
         description: '.......'
     }

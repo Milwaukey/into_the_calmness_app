@@ -4,7 +4,7 @@ import PINS from '../data/pins.js'
 
 export const PinContext = createContext({
     pins : [],
-    // addPin : () => {},
+    addPin : (pinObj) => {},
     // removePin : (id) => {}
 })
 
@@ -12,9 +12,10 @@ function PinContextProvider({ children }){
 
     const [locationPins, setPins] = useState(PINS)
 
-    // function addPin(){
-
-    // }
+    function addPin(pinObj){
+        console.log(pinObj)
+        setPins((prevPins) => [...prevPins, pinObj] )
+    }
 
     // function removePin(){
 
@@ -23,7 +24,7 @@ function PinContextProvider({ children }){
 
     const value = {
         pins: locationPins,
-        // addPin : addPin,
+        addPin : addPin,
         // removePin : removePin
     }
 
