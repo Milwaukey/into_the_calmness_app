@@ -1,11 +1,16 @@
+
+
 import { View, Text, StyleSheet, Button } from "react-native";
 
 
-export default function DetailViewPinScreen({navigation}){
+export default function DetailViewPinScreen({route, navigation}){
+
+    const { pinObj } = route.params;
+    
 
     return (
         <View style={styles.container}>
-            <Text>Detail View Pin</Text>
+            <Text>{pinObj.title}</Text>
             <Button title="Go Back" onPress={()=>navigation.navigate('MainTabs', {screen: 'Map'})} />
         </View>
     );
