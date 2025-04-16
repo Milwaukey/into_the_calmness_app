@@ -18,8 +18,8 @@ export default function Pin({pinObj}){
 
 const styles = StyleSheet.create({
     pinContainer : {
-        width: 45,
-        height: 45,
+        width: 60,
+        height: 60,
     },
     pinImage : {
         width: '100%',
