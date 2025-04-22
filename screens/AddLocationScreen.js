@@ -1,6 +1,7 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Button, Image, Pressable, TextInput, Alert } from "react-native";
+import * as Location from 'expo-location';
 
 import { useContext } from 'react';
 import { PinContext } from '../store/pins-context.js';
@@ -8,18 +9,32 @@ import { PinContext } from '../store/pins-context.js';
 
 export default function AddLocationScreen( {route, navigation} ){
 
-    const { addPin } = useContext(PinContext); // Skal være den function jeg skal bruge for at oprette!
+    const { addNewPin } = useContext(PinContext); // Skal være den function jeg skal bruge for at oprette!
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [location, setLocation] = useState('')
+    const [pinLocation, setLocation] = useState('')
 
 
     const { photo } = route.params || {};
 
-    function handleGetLocation(){
+    // TO:DO (note)
+    useEffect(() => {
+        handleGetLocation();
+    }, []);
+
+
+    async function handleGetLocation(){
         // Geofencing the location
 
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== 'granted') {
+          console.log('Problems with the geo location') // TO:DO give an alert, if you have not approved geo tracking
+          return;
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+        setLocation(location);
     }
 
 
@@ -34,15 +49,19 @@ export default function AddLocationScreen( {route, navigation} ){
               ]);
         }
 
+        // TO:DO Create a test, that ensures a location with geo has been set
+
+
+        // Creating an unique ID for the pinObject
         const id = `${Date.now()}-${Math.random().toString(36)}`;
 
-        // Making the location object
+        // Making the pinObject
         const newLocationObj = 
         {
             id: id,
             coordinate: {
-                latitude: 55.71741262404851,
-                longitude: 12.380605952531171
+                latitude: pinLocation.coords.latitude,
+                longitude: pinLocation.coords.longitude
             },
             image: photo,
             title: title,
@@ -50,7 +69,8 @@ export default function AddLocationScreen( {route, navigation} ){
         }
 
         // Parsing the new Location object to context Pins with addPn function in context
-        addPin(newLocationObj)
+        addNewPin(newLocationObj)
+        setLocation('')
     }
 
 

@@ -4,15 +4,17 @@ import PINS from '../data/pins.js'
 
 export const PinContext = createContext({
     pins : [],
-    addPin : (pinObj) => {},
+    addNewPin : (pinObj) => {},
     // removePin : (id) => {}
 })
 
 function PinContextProvider({ children }){
+    // Temporary storage of title and description, while taking an image
 
+    
     const [locationPins, setPins] = useState(PINS)
 
-    function addPin(pinObj){
+    function addNewPin(pinObj){
         console.log(pinObj)
         setPins((prevPins) => [...prevPins, pinObj] )
     }
@@ -24,7 +26,7 @@ function PinContextProvider({ children }){
 
     const value = {
         pins: locationPins,
-        addPin : addPin,
+        addNewPin : addNewPin,
         // removePin : removePin
     }
 

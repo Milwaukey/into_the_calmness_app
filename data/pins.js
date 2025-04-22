@@ -41,6 +41,26 @@ export default [
         image: require('../assets/images/madpakkehuset.jpg'),
         title: 'Harrestrup Ådal',
         description: '.......'
+    },
+    { 
+        id: 'ID029302923789273',
+        coordinate: {
+            latitude: 55.09205523498832,
+            longitude: 14.752171093252969
+        },
+        image: require('../assets/images/att.LJWEm_xFpL5YCt1cPfAtz-Bm7fxV7UahbSxu9h3_UpQ.jpg'),
+        title: 'Titel missing',
+        description: '.......'
+    },
+    { 
+        id: 'ID0293029237389488394',
+        coordinate: {
+            latitude: 54.829195319783445,
+            longitude: 11.551697822088277
+        },
+        image: require('../assets/images/att.dBheIrW2zFU2MoacwDUg2n4CY3Z8pB0zOhg022Obu5w.jpg'),
+        title: 'Titel missing',
+        description: '.......'
     }
 
 ]
