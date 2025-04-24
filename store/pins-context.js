@@ -4,6 +4,7 @@ import PINS from '../data/pins.js'
 
 export const PinContext = createContext({
     pins : [],
+    favoritePins: [],
     addNewPin : (pinObj) => {},
     // removeFavoritePin : (id) => {}
     // addFavoritePin : (id) => {}
