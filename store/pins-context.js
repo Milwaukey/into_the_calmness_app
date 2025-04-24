@@ -5,29 +5,34 @@ import PINS from '../data/pins.js'
 export const PinContext = createContext({
     pins : [],
     addNewPin : (pinObj) => {},
-    // removePin : (id) => {}
+    // removeFavoritePin : (id) => {}
+    // addFavoritePin : (id) => {}
 })
 
 function PinContextProvider({ children }){
-    // Temporary storage of title and description, while taking an image
 
-    
     const [locationPins, setPins] = useState(PINS)
+    const [favoritePins, setFavoritePins] = useState(['ID97237732090328', 'ID93478374834', 'ID0293029237343u9824739874'])
 
     function addNewPin(pinObj){
-        console.log(pinObj)
         setPins((prevPins) => [...prevPins, pinObj] )
     }
 
-    // function removePin(){
+    // function addFavoritePin(){
+
+    // }
+
+    // function removeFavoritePin(){
 
     // }
 
 
     const value = {
         pins: locationPins,
+        favoritePins: favoritePins,
         addNewPin : addNewPin,
-        // removePin : removePin
+        // removeFavoritePin : removeFavoritePin,
+        // addFavoritePin : addFavoritePin
     }
 
 

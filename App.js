@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
+import { StatusBar } from "react-native";
 
 import PinContextProvider from './store/pins-context';
 
@@ -15,6 +16,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <PinContextProvider>
+      <StatusBar />
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Login" component={HomeScreen} />

@@ -9,14 +9,15 @@ import { PinContext } from '../store/pins-context.js';
 
 export default function AddLocationScreen( {route, navigation} ){
 
-    const { addNewPin } = useContext(PinContext); // Skal være den function jeg skal bruge for at oprette!
+    // Importing and getting elements (Function and objects)
+    const { addNewPin } = useContext(PinContext); 
+    const { photo } = route.params || {};
 
+    // Handling states for the application
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [pinLocation, setLocation] = useState('')
 
-
-    const { photo } = route.params || {};
 
     // TO:DO (note)
     useEffect(() => {
@@ -25,8 +26,7 @@ export default function AddLocationScreen( {route, navigation} ){
 
 
     async function handleGetLocation(){
-        // Geofencing the location
-
+        // TO:DO (note)
         let { status } = await Location.requestForegroundPermissionsAsync();
         if (status !== 'granted') {
           console.log('Problems with the geo location') // TO:DO give an alert, if you have not approved geo tracking
@@ -49,7 +49,7 @@ export default function AddLocationScreen( {route, navigation} ){
               ]);
         }
 
-        // TO:DO Create a test, that ensures a location with geo has been set
+        // TO:DO Create a test, that ensures a location with geo has been set (And if not, set the locaiton)
 
 
         // Creating an unique ID for the pinObject
@@ -71,6 +71,8 @@ export default function AddLocationScreen( {route, navigation} ){
         // Parsing the new Location object to context Pins with addPn function in context
         addNewPin(newLocationObj)
         setLocation('')
+
+        // If object is created - reload back to the map 
     }
 
 
