@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 
 import GeoLocationCalc from './GeoLocationCalc'
 import StarIcon from './../assets/icons/StarIcon'
@@ -24,9 +24,9 @@ export default function FavoriteItem({pinObj, favoritePins, removeFavoritePin}){
                 <GeoLocationCalc pinLocation={pinObj.coordinate}/>
            </View>
 
-           <TouchableOpacity style={styles.favoriteIcon} onPress={handleFavoriteLocation}>
+           <Pressable style={styles.favoriteIcon} onPress={handleFavoriteLocation}>
                 <StarIcon width={24} height={24} fill={'#000'} isFavorited={isFavorited} />
-            </TouchableOpacity>
+            </Pressable>
         </View>
     )
 }

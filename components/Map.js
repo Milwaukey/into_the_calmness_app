@@ -11,10 +11,6 @@ export default function Map({navigation} ){
 
   const { pins } = useContext(PinContext);
 
-  function testTouch(){ // TEST FUNCTION - DELET LATER
-    console.log('You hit a pin')
-  }
-
     const CAPITAL_REGION = {
         latitude: 55.71759172985036, 
         longitude: 12.375472260329905,
@@ -35,7 +31,7 @@ export default function Map({navigation} ){
                 </Pressable>
             </Marker>
           ))}
-    
+  
     
           </MapView>
         </View>

@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, ImageBackground, StyleSheet, Pressable } from "react-native";
 import { BlurView } from 'expo-blur';
 
 import Logo from "../assets/icons/Logo";
@@ -19,11 +19,11 @@ export default function HomeScreen({ navigation }){
                         <Text style={styles.subText}>Find your calm spot today!</Text>
                     </View>
 
-                    <TouchableOpacity onPress={() => navigation.replace("MainTabs")}>
+                    <Pressable onPress={() => navigation.replace("MainTabs")}>
                         <BlurView intensity={10} tint="extraLight" style={styles.signInBtn}>
                             <Text style={styles.signInBtnText}>Open the app</Text>                        
                         </BlurView>
-                    </TouchableOpacity>
+                    </Pressable>
 
                 </View>
 

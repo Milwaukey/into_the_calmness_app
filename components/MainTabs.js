@@ -1,14 +1,10 @@
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import CustomTabBar from '../components/CustomTabBar';
-import { TouchableOpacity } from 'react-native';
-
 
 import MapScreen from '../screens/MapScreen.js';
 import FavoriteScreen from '../screens/FavoriteScreen';
 import ProfileScreen from '../screens/ProfileScreen.js';
-import AddLocationScreen from '../screens/AddLocationScreen.js';
-
 
 import MapIcon from '../assets/icons/MapIcon.js'
 import StarIcon from '../assets/icons/StarIcon.js';
@@ -25,7 +21,7 @@ function DummyScreen() {
   }
 
 
-export default function MainTabs({navigation}){
+export default function MainTabs(){
     
     return (
         <Tab.Navigator initialRouteName="Map" tabBar={props => <CustomTabBar {...props} />} >

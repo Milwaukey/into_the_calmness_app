@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Image, Pressable, TextInput, Alert, ImageBackground, TouchableOpacity, KeyboardAvoidingView} from "react-native";
+import { View, Text, StyleSheet, Image, Pressable, TextInput, Alert, ImageBackground, KeyboardAvoidingView} from "react-native";
 import * as Location from 'expo-location';
 
 import { useContext } from 'react';
@@ -40,8 +40,7 @@ export default function AddLocationScreen( {route, navigation} ){
         let { status } = await Location.requestForegroundPermissionsAsync();
         if (status !== 'granted') {
             
-            return Alert.alert('Could not get your location!', 'Please check check sittings for location approveal to be able to create new locations.', [
-            ]);
+            return Alert.alert('Could not get your location!', 'Please check check sittings for location approveal to be able to create new locations.', []);
         }
 
         let location = await Location.getCurrentPositionAsync({});
@@ -52,22 +51,17 @@ export default function AddLocationScreen( {route, navigation} ){
     function handleAddNewLocation(){
         // Check if fields are empty before creating a new location!
         if(title == ''){
-            return Alert.alert('Missing Title', 'Please enter a title before proceeding.', [
-              ]);
-
+            return Alert.alert('Missing Title', 'Please enter a title before proceeding.', []);
         }else if(description == ''){
-            return Alert.alert('Missing Description', 'Please write a short description to continue.', [
-              ]);
+            return Alert.alert('Missing Description', 'Please write a short description to continue.', []);
         }else if(pinLocation === ''){
             
             // TO:DO Create a test, that ensures a location with geo has been set (And if not, set the locaiton)
-            return Alert.alert('Missing Location', 'Please add the location to be able to create a new Location.', [
-            ]);
+            return Alert.alert('Missing Location', 'Please add the location to be able to create a new Location.', []);
+        }else if(photo === undefined){
+            // TODO: Check if there has been submitted an image to the new Location object
+            return Alert.alert('Missing Photo', 'Please take a photo of the Location before submitting.', []);
         }
-
-        // TODO: Check if there has been submitted an image to the new Location object
-
-
 
         // Creating an unique ID for the pinObject
         const id = `${Date.now()}-${Math.random().toString(36)}`;
@@ -105,16 +99,12 @@ export default function AddLocationScreen( {route, navigation} ){
 
             <View style={styles.container}>
                 <Text style={styles.textHeading}>Add New Location</Text>
-
                 {photo == undefined ? 
-
-                <TouchableOpacity style={styles.imageWrapper} onPress={() => navigation.replace("Camera")}>
+                <Pressable style={styles.imageWrapper} onPress={() => navigation.replace("Camera")}>
                     <CameraIcon width={15} height={15} fill={'black'}/>
                     <Text style={styles.imageTextField}>Add Image</Text>
-                </TouchableOpacity>
-
+                </Pressable>
                     :
-
                 <Image style={styles.imageShowWrapper} source={{ uri: photo }} />
 
                 }
@@ -138,9 +128,9 @@ export default function AddLocationScreen( {route, navigation} ){
                 </Pressable>
                 
 
-                <TouchableOpacity style={styles.submitBtn} onPress={handleAddNewLocation}>
+                <Pressable style={styles.submitBtn} onPress={handleAddNewLocation}>
                     <Text style={styles.submitText}>+ Add New Location</Text>
-                </TouchableOpacity>
+                </Pressable>
 
 
             </View>

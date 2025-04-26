@@ -1,6 +1,6 @@
 
 
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, Pressable } from "react-native";
 import { BlurView } from 'expo-blur';
 import { useContext } from 'react';
 import { PinContext } from '../store/pins-context.js';
@@ -37,9 +37,9 @@ export default function DetailViewPinScreen({route, navigation}){
                
                <View style={styles.headingBox}>
                     <Text style={styles.titel}>{pinObj.title}</Text>
-                    <TouchableOpacity onPress={handleFavoriteLocation}>
+                    <Pressable onPress={handleFavoriteLocation}>
                         <StarIcon width={24} height={24} fill={'#000'} isFavorited={isFavorited} />
-                    </TouchableOpacity>
+                    </Pressable>
                </View>
 
                 <GeoLocationCalc pinLocation={pinObj.coordinate}/>

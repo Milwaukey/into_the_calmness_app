@@ -1,16 +1,13 @@
-import { View, Text, StyleSheet, Image, Button } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 
 
-export default function ProfileScreen({navigation}){
+export default function ProfileScreen(){
 
     return (
         <View style={styles.container}>
             <View style={styles.headContainer}>
                 <Image style={styles.profileImage} source={require('../assets/images/cover-image.jpg')}/>
                 <Text style={styles.profileName}>Jane Doe</Text>
-
-                <Button onPress={() => navigation.navigate("AddLocation")} title={'add location'}></Button>
-
             </View>
         </View>
     );

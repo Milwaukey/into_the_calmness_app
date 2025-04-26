@@ -1,6 +1,6 @@
 import { CameraView, useCameraPermissions } from 'expo-camera';
-import { useState, useRef } from 'react';
-import { Button, StyleSheet, Text, Pressable, View } from 'react-native';
+import { useRef } from 'react';
+import { Button, StyleSheet, Text, Pressable, View, Alert } from 'react-native';
 
 
 import CameraIcon from '../assets/icons/CameraIcon'
@@ -24,10 +24,7 @@ export default function Camera({onPhotoTaken}) {
 
   if (!permission.granted) {
     return (
-      <View style={styles.container}>
-        <Text style={styles.message}>We need your permission to show the camera</Text>
-        <Button onPress={handlePermissions} title="grant permission" />
-      </View>
+      Alert.alert('Missing Permission', 'We need your permission to show the camera.', [{text: 'Okay', onPress: handlePermissions}, {text: 'Cancel', style: 'cancel', onPress: handlePermissions}])
     );
   }
 

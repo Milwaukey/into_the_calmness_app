@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 
 
 
@@ -23,12 +23,12 @@ export default function CustomTabBar({ state, descriptors, navigation }){
                   };
 
                   return (
-                    <TouchableOpacity key={index} onPress={onPress}>
+                    <Pressable key={index} onPress={onPress}>
                         {options.tabBarIconComponent && (
                             <options.tabBarIconComponent width={24} height={24} fill={isFocused ? 'white' : 'gray'}
                             />
                         )}
-                    </TouchableOpacity>
+                    </Pressable>
                   );
             })}
 

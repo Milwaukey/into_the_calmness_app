@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 import Camera from "../components/Camera";
 import PhotoPreview from "../components/PhotoPreview";
