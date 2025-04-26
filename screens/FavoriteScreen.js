@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         paddingLeft: 25
     },
     textHeading: {
-        fontSize: 36,
+        fontSize: 30,
         fontWeight: 700,
         textAlign: 'center'
     }

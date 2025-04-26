@@ -5,6 +5,8 @@ import { View, Text, Image, StyleSheet, Button } from "react-native";
 import Camera from "../components/Camera";
 import PhotoPreview from "../components/PhotoPreview";
 
+import BackArrow from './../assets/icons/BackArrow'
+
 export default function CameraScreen({navigation}){
 
     const [photoUri, setPhotoUri] = useState('')
@@ -26,10 +28,10 @@ export default function CameraScreen({navigation}){
     return (
         <View style={styles.container}>
 
+            <BackArrow fill={'white'} onPress={()=>navigation.navigate('MainTabs', {screen: 'AddLocation'})} />
+
             {photoUri == '' ? <Camera onPhotoTaken={onPhotoTaken} /> : <PhotoPreview handleUsePhoto={handleUsePhoto} handleReTakePhoto={handleReTakePhoto} photoUri={photoUri}/>}
 
-
-            {/* <Button title="Cancel" onPress={()=>navigation.navigate('MainTabs', {screen: 'AddLocation'})} /> */}
         </View>
     );
 }
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: 'lightblue',
+        backgroundColor: '#282828',
     }
 
 }) 

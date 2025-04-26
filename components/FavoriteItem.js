@@ -17,7 +17,7 @@ export default function FavoriteItem({pinObj, favoritePins, removeFavoritePin}){
 
     return (
         <View style={styles.FavoriteItemContainer}>
-           <Image style={styles.image} source={pinObj.image}/>
+           <Image style={styles.image} source={typeof pinObj.image === 'string' ? {uri : pinObj.image} : pinObj.image}/>
 
            <View>
                 <Text style={styles.headingTitle}>{pinObj.title}</Text>
