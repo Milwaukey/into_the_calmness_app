@@ -6,8 +6,8 @@ export const PinContext = createContext({
     pins : [],
     favoritePins: [],
     addNewPin : (pinObj) => {},
-    // removeFavoritePin : (id) => {}
-    // addFavoritePin : (id) => {}
+    addFavoritePin : (id) => {},
+    removeFavoritePin : (id) => {}
 })
 
 function PinContextProvider({ children }){
@@ -19,21 +19,24 @@ function PinContextProvider({ children }){
         setPins((prevPins) => [...prevPins, pinObj] )
     }
 
-    // function addFavoritePin(){
-
-    // }
-
-    // function removeFavoritePin(){
-
-    // }
+    function addFavoritePin(id){
+        setFavoritePins([...favoritePins, id])
+    }
+    
+    function removeFavoritePin(id){
+        setFavoritePins((prevFavorites) =>  {
+            const newFavorites =  prevFavorites.filter(favoriteId => favoriteId !== id )
+            return newFavorites
+        })
+    }
 
 
     const value = {
         pins: locationPins,
         favoritePins: favoritePins,
         addNewPin : addNewPin,
-        // removeFavoritePin : removeFavoritePin,
-        // addFavoritePin : addFavoritePin
+        removeFavoritePin : removeFavoritePin,
+        addFavoritePin : addFavoritePin
     }
 
 

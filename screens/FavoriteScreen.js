@@ -5,7 +5,9 @@ export default function HomeScreen(){
 
     return (
         <View style={styles.container}>
-            <Text>Favorite List</Text>
+            <Text style={styles.textHeading}>Your Favorites</Text>
+
+            
         </View>
     );
 }
@@ -15,8 +17,12 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: 'grey',
-        paddingTop: 60
+        paddingTop: 80
+    },
+    textHeading: {
+        fontSize: 36,
+        fontWeight: 700,
+        textAlign: 'center'
     }
 
 }) 
