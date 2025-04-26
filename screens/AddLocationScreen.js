@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Button, Image, Pressable, TextInput, Alert, ImageBackground, TouchableOpacity} from "react-native";
+import { View, Text, StyleSheet, Image, Pressable, TextInput, Alert, ImageBackground, TouchableOpacity, KeyboardAvoidingView} from "react-native";
 import * as Location from 'expo-location';
 
 import { useContext } from 'react';
@@ -12,7 +12,7 @@ import LocationIcon from '../assets/icons/LocationIcon.js'
 import DescriptionIcon from '../assets/icons/DescriptionIcon.js'
 import TextIcon from '../assets/icons/TextIcon.js'
 import CameraIcon from '../assets/icons/CameraIcon.js'
-
+import BackArrow from '../assets/icons/BackArrow.js'
 
 
 
@@ -99,6 +99,9 @@ export default function AddLocationScreen( {route, navigation} ){
     return (
 
         <ImageBackground source={require('../assets/images/cover-image.jpg')} resizeMode="cover" style={styles.backgroundImage}>
+            <BackArrow fill={'white'} onPress={()=>navigation.navigate('MainTabs', {screen: 'Map'})}/>
+            <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={0}>
+
 
             <View style={styles.container}>
                 <Text style={styles.textHeading}>Add New Location</Text>
@@ -141,7 +144,7 @@ export default function AddLocationScreen( {route, navigation} ){
 
 
             </View>
-
+            </KeyboardAvoidingView>
             <View style={styles.overlay} />
         </ImageBackground>
 
@@ -167,9 +170,12 @@ const styles = StyleSheet.create({
     container: {
         height: 650,
         backgroundColor: 'white',
-        borderRadius: 35,
         zIndex: 1,
-        padding: 25
+        padding: 25,
+        borderTopLeftRadius: 35,
+        borderTopRightRadius: 35,
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,
     },
     textHeading: {
         fontSize: 30,
@@ -195,13 +201,14 @@ const styles = StyleSheet.create({
         letterSpacing: 1
     },
     imageShowWrapper:{
-        height: 200,
+        height: 225,
         marginTop: 10,
         resizeMode: 'cover',
         borderRadius: 15
     },
 
     inputWrapper: {
+        height: 60,
         marginTop: 10,
         backgroundColor: '#F6F6F6',
         paddingTop: 15,

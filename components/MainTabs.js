@@ -1,6 +1,7 @@
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import CustomTabBar from '../components/CustomTabBar';
+import { TouchableOpacity } from 'react-native';
 
 
 import MapScreen from '../screens/MapScreen.js';
@@ -18,7 +19,13 @@ import PlusIcon from '../assets/icons/PlusIcon.js'
 const Tab = createBottomTabNavigator();
 
 
-export default function MainTabs(){
+// This function, gives us the oppotunity to fake a screen, so we can direct you out of the mainTabs navigation for keeping the plus icon
+function DummyScreen() {
+    return null;
+  }
+
+
+export default function MainTabs({navigation}){
     
     return (
         <Tab.Navigator initialRouteName="Map" tabBar={props => <CustomTabBar {...props} />} >
@@ -26,7 +33,8 @@ export default function MainTabs(){
             <Tab.Screen name="Profile" component={ProfileScreen} options={{tabBarIconComponent: ProfileIcon, headerShown: false,}} />
             <Tab.Screen name="Favorite" component={FavoriteScreen} options={{tabBarIconComponent: StarIcon, headerShown: false,}} />
             <Tab.Screen name="Map" component={MapScreen} options={{tabBarIconComponent: MapIcon, headerShown: false,}} />
-            <Tab.Screen name="AddLocation" component={AddLocationScreen} options={{tabBarIconComponent: PlusIcon, headerShown: false,}} />
+            {/* <Tab.Screen name="AddLocation" component={AddLocationScreen} options={{tabBarIconComponent: PlusIcon, headerShown: false}} /> */}
+            <Tab.Screen name="DummyScreen" component={DummyScreen} options={{tabBarIconComponent: PlusIcon}} listeners={({ navigation }) => ({tabPress: (e) => {e.preventDefault(); navigation.navigate("AddLocation");}})}/>
 
         </Tab.Navigator>
     )

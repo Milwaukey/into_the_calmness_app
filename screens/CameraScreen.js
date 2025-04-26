@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { View, Text, Image, StyleSheet, Button } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 
 import Camera from "../components/Camera";
 import PhotoPreview from "../components/PhotoPreview";
@@ -21,14 +21,14 @@ export default function CameraScreen({navigation}){
     }
 
     function handleUsePhoto(){
-        navigation.navigate('MainTabs', {screen: 'AddLocation', params: {photo: photoUri} })
+        navigation.navigate('AddLocation', {photo: photoUri})
     }
     
 
     return (
         <View style={styles.container}>
 
-            <BackArrow fill={'white'} onPress={()=>navigation.navigate('MainTabs', {screen: 'AddLocation'})} />
+            <BackArrow fill={'white'} onPress={()=>navigation.navigate('AddLocation')} />
 
             {photoUri == '' ? <Camera onPhotoTaken={onPhotoTaken} /> : <PhotoPreview handleUsePhoto={handleUsePhoto} handleReTakePhoto={handleReTakePhoto} photoUri={photoUri}/>}
 

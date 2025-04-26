@@ -29,7 +29,7 @@ export default function DetailViewPinScreen({route, navigation}){
     
     
     return (
-        <ImageBackground source={typeof pinObj.image === 'string' ? {uri : pinObj.image} : image} resizeMode="cover" style={styles.backgroundImage}>
+        <ImageBackground source={typeof pinObj.image === 'string' ? {uri : pinObj.image} : pinObj.image} resizeMode="cover" style={styles.backgroundImage}>
 
             <BackArrow onPress={()=>navigation.navigate('MainTabs', {screen: 'Map'})}/>
 

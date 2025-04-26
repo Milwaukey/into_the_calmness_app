@@ -8,9 +8,10 @@ import MainTabs from './components/MainTabs';
 import HomeScreen from './screens/HomeScreen';
 import CameraScreen from './screens/CameraScreen';
 import DetailViewPinScreen from './screens/DetailViewPinScreen';
+import AddLocationScreen from './screens/AddLocationScreen';
 
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator(); 
 
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
           <Stack.Screen name="Login" component={HomeScreen} />
           <Stack.Screen name="Camera" component={CameraScreen} />
           <Stack.Screen name="DetailView" component={DetailViewPinScreen} />
+          <Stack.Screen name="AddLocation" component={AddLocationScreen} />
           <Stack.Screen name="MainTabs" component={MainTabs} />
         </Stack.Navigator>
       </NavigationContainer>
