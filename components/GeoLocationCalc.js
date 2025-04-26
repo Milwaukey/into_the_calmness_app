@@ -7,7 +7,7 @@ import * as Location from 'expo-location';
 
 import LocationIcon from './../assets/icons/LocationIcon'
 
-export default function GeoLocationCalc({pinLocation, }){
+export default function GeoLocationCalc({ pinLocation }){
 
     const [userLocation, setUserLocation] = useState(null)
 
