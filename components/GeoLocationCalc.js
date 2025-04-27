@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { useState, useEffect } from 'react';
 
 import Haversine from '../components/HelperFunctions.js'
-import * as Location from 'expo-location';
+import { handleGetLocation } from "../components/HelperFunctions.js";
 
 import LocationIcon from './../assets/icons/LocationIcon'
 
@@ -11,22 +11,17 @@ export default function GeoLocationCalc({ pinLocation }){
 
     const [userLocation, setUserLocation] = useState(null)
 
-    // Get the Users location for calculation
+    // Handling the side effects for the geolocation, when its not yet recieved.
     useEffect(() => {
-        handleGetLocation();
+        fetchUserLocation();
     }, []);
-    
-    
-    async function handleGetLocation(){
-        // TO:DO (note)
-        let { status } = await Location.requestForegroundPermissionsAsync();
-        if (status !== 'granted') {
-            console.log('Problems with the geo location') // TO:DO give an alert, if you have not approved geo tracking
-            return;
-        }
 
-        let location = await Location.getCurrentPositionAsync({});
-        setUserLocation(location)
+    // Grabing the location from HelperFunctions, so we can use geoLocation fetching more places in the app
+    async function fetchUserLocation(){
+        const location = await handleGetLocation()
+        if( location ){
+            setUserLocation(location)
+        }
     }
     
     // Function that calculates the distance from you to the location in meters

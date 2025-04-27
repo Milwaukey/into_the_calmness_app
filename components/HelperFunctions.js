@@ -1,4 +1,5 @@
-// USAGE: let dist = haversine(latt_sted_A, long_sted_A, latt_sted_B, long_sted_B));
+import * as Location from 'expo-location';
+
 
 export default function Haversine(lat1, lon1, lat2, lon2) {
     const toRad = (deg) => (deg * Math.PI) / 180;
@@ -20,3 +21,17 @@ export default function Haversine(lat1, lon1, lat2, lon2) {
   
     return Math.round(R * c); // afstand i meter
   }
+
+
+  export async function handleGetLocation(){
+
+    // Checking the status for permissions on getting geo location, and handling the granted and not granted situation. 
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') {
+      Alert.alert('Could not get your location!', 'Please check check sittings for location approveal to be able to create new locations.', []);
+      return null;
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    return location
+}

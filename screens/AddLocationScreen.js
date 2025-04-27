@@ -1,12 +1,9 @@
 
 import { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image, Pressable, TextInput, Alert, ImageBackground, KeyboardAvoidingView} from "react-native";
-import * as Location from 'expo-location';
 
 import { useContext } from 'react';
 import { PinContext } from '../store/pins-context.js';
-
-
 
 import LocationIcon from '../assets/icons/LocationIcon.js'
 import DescriptionIcon from '../assets/icons/DescriptionIcon.js'
@@ -14,6 +11,7 @@ import TextIcon from '../assets/icons/TextIcon.js'
 import CameraIcon from '../assets/icons/CameraIcon.js'
 import BackArrow from '../assets/icons/BackArrow.js'
 
+import { handleGetLocation } from "../components/HelperFunctions.js";
 
 
 export default function AddLocationScreen( {route, navigation} ){
@@ -28,25 +26,18 @@ export default function AddLocationScreen( {route, navigation} ){
     const [pinLocation, setLocation] = useState('')
 
 
-    // Handling the side effects for the geolocation, when its not yet recieved. 
+    // Handling the side effects for the geolocation, when its not yet recieved.
     useEffect(() => {
-        handleGetLocation();
+        fetchUserLocation();
     }, []);
 
-
-    async function handleGetLocation(){
-
-        // Checking the status for permissions on getting geo location, and handling the granted and not granted situation. 
-        let { status } = await Location.requestForegroundPermissionsAsync();
-        if (status !== 'granted') {
-            
-            return Alert.alert('Could not get your location!', 'Please check check sittings for location approveal to be able to create new locations.', []);
+    // Grabing the location from HelperFunctions, so we can use geoLocation fetching more places in the app
+    async function fetchUserLocation(){
+        const location = await handleGetLocation()
+        if( location ){
+            setLocation(location)
         }
-
-        let location = await Location.getCurrentPositionAsync({});
-        setLocation(location);
     }
-
 
     function handleAddNewLocation(){
         // Check if fields are empty before creating a new location!
@@ -120,7 +111,7 @@ export default function AddLocationScreen( {route, navigation} ){
                     <TextInput style={styles.textField} placeholder='Description' value={description} onChangeText={setDescription}/>
                 </View>
 
-                <Pressable onPress={handleGetLocation}>
+                <Pressable onPress={fetchUserLocation}>
                     <View style={styles.inputWrapper}>
                         <LocationIcon width={15} height={15} fill={'black'}/>
                             <Text style={styles.textField}>{pinLocation === '' ? 'Add Location' : `${pinLocation.coords.latitude}, ${pinLocation.coords.longitude}`}</Text>

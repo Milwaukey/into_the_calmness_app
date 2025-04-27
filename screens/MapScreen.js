@@ -6,6 +6,7 @@ import Map from '../components/Map.js'
 
 export default function MapScreen({navigation}){
 
+
     return (
         <View style={styles.container}>
             <Map navigation={navigation}/>
