@@ -5,11 +5,6 @@ export default function ProfileScreen(){
 
     return (
         <View style={styles.container}>
-            {/* <View style={styles.headContainer}>
-                <Image style={styles.profileImage} source={require('../assets/images/cover-image.jpg')}/>
-                <Text style={styles.profileName}>Jane Doe</Text>
-            </View> */}
-
             
             <View style={styles.profileImageName}>
                 <Image style={styles.profileImage} source={require('../assets/images/cover-image.jpg')}/>

@@ -81,6 +81,46 @@ export default [
         image: require('../assets/images/480926607_122218388606194119_3236368972218643394_n.jpg'),
         title: 'Coastal Birds',
         description: 'Watch the birds glide along the coastline and enjoy a peaceful moment with nature’s rhythm.'
+    },
+    {  
+        id: 'ID029302934893849384', 
+        coordinate: {
+            latitude: 55.77326,
+            longitude: 9.92922
+        },
+        image: require('../assets/images/384938493.jpg'),
+        title: 'Countryside Viewpoint',
+        description: 'Take a peaceful break at this quiet bench by the road. Enjoy the view of endless green fields stretching into the horizon. A perfect spot to rest, breathe deeply, and recharge.'
+    },
+    {  
+        id: 'ID029302934493489384', 
+        coordinate: { 
+            latitude: 55.08455083401682,
+            longitude: 11.762932587764462
+        },
+        image: require('../assets/images/DSC00558-Edit.jpg'),
+        title: 'Owls to admire',
+        description: 'Feel your mind slow down as you watch the owl glide silently across the open fields. Moments like this connect us to nature’s calm and support our mental well-being. A peaceful reminder of how nature nurtures both body and mind.'
+    },
+    {  
+        id: 'ID02930293449000488483', 
+        coordinate: { 
+            latitude: 56.218527,
+            longitude: 10.548326
+        },
+        image: require('../assets/images/img_849384.jpg'),
+        title: 'Path through Mols Bjerge',
+        description: 'Follow this peaceful path through the rolling hills of Mols Bjerge. Let the open sky and the gentle green landscape clear your mind. Nature’s calm is the perfect support for your mental well-being.'
+    },
+    {  
+        id: 'ID0293029344900046969949', 
+        coordinate: {  
+            latitude: 55.776726395076686,
+            longitude: 11.292550851956088
+        },
+        image: require('../assets/images/IMG_4879.jpg'),
+        title: 'Walkthough Nekselø',
+        description: 'Take a walk along the peaceful paths of Nekselø. Enjoy the calming nature and the beautiful surroundings all around you.'
     }
 
 ]
