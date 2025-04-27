@@ -29,7 +29,6 @@ export default function MainTabs(){
             <Tab.Screen name="Profile" component={ProfileScreen} options={{tabBarIconComponent: ProfileIcon, headerShown: false,}} />
             <Tab.Screen name="Favorite" component={FavoriteScreen} options={{tabBarIconComponent: StarIcon, headerShown: false,}} />
             <Tab.Screen name="Map" component={MapScreen} options={{tabBarIconComponent: MapIcon, headerShown: false,}} />
-            {/* <Tab.Screen name="AddLocation" component={AddLocationScreen} options={{tabBarIconComponent: PlusIcon, headerShown: false}} /> */}
             <Tab.Screen name="DummyScreen" component={DummyScreen} options={{tabBarIconComponent: PlusIcon}} listeners={({ navigation }) => ({tabPress: (e) => {e.preventDefault(); navigation.navigate("AddLocation");}})}/>
 
         </Tab.Navigator>

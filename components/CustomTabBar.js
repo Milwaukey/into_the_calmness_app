@@ -14,20 +14,19 @@ export default function CustomTabBar({ state, descriptors, navigation }){
                 const isFocused = state.index === index; // Checks if the current state index matches the clicked one!
                 const { options } = descriptors[route.key]; // Destructuring to access properties in options, like the icon for the menubar
 
+                // onPress function is directly from the react Navigation documentation
                 function onPress() {
                     const event = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true,});
           
-                    if (!isFocused && !event.defaultPrevented) {
-                      navigation.navigate(route.name);
+                    if (!isFocused && !event.defaultPrevented) { // !event.defaultPrevents makes it possible for me to overider AddLocation, so it will show Stack Navigation instead of staying in tabs stack
+                      navigation.navigate(route.name); // Navigates to the belonging route of the navigation in tabs.
                     }
                   };
 
                   return (
                     <Pressable key={index} onPress={onPress}>
-                        {options.tabBarIconComponent && (
-                            <options.tabBarIconComponent width={24} height={24} fill={isFocused ? 'white' : 'gray'}
-                            />
-                        )}
+                        {/* Grabbing each icon parsed though props, by tabbing into options.tabBarIconComponent, which contains my Svg Icon */}
+                        <options.tabBarIconComponent width={24} height={24} fill={isFocused ? 'white' : 'gray'}/>
                     </Pressable>
                   );
             })}
